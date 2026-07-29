@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тайвань · роудбук · октябрь</title>
+<meta name="description" content="Роудбук велопохода по Тайваню: кольцо из Тайбэя, 11 этапов, 1049 км, 10 650 м набора. Профили высот, статус закрытых дорог, протокол тайфуна.">
+<meta name="color-scheme" content="light dark">
+<style>
+  html{-webkit-text-size-adjust:100%}
+  img,svg{max-width:100%}
+  .themetoggle{position:fixed;right:14px;bottom:14px;z-index:99;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--card);color:var(--ink-2);border:1px solid var(--line);
+    border-radius:2px;padding:9px 12px;cursor:pointer;box-shadow:var(--shadow)}
+  .themetoggle:hover{color:var(--ink);border-color:var(--sage)}
+  .themetoggle:focus-visible{outline:2px solid var(--jade);outline-offset:3px}
+  @media print{.themetoggle{display:none}}
+</style>
+</head>
+<body>
+<style>
+:root{
+  --paper:#EFF1EC; --paper-2:#E5E9E2; --card:#F7F8F5;
+  --ink:#111917; --ink-2:#3B4A46; --ink-3:#6D7C77;
+  --jade:#0F7A63; --jade-soft:#D8E7E1;
+  --amber:#B26A12; --amber-soft:#F0E3CE;
+  --verm:#A93728; --verm-soft:#F1DCD8;
+  --sage:#8CA294; --line:#CFD7CE;
+  --shadow:0 1px 2px rgba(17,25,23,.06), 0 8px 24px -12px rgba(17,25,23,.18);
+  --display:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --body:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0B1211; --paper-2:#101917; --card:#121D1A;
+    --ink:#E3EAE5; --ink-2:#AAB9B3; --ink-3:#7E8E88;
+    --jade:#46C1A3; --jade-soft:#123028;
+    --amber:#DCA153; --amber-soft:#2C2317;
+    --verm:#E0715D; --verm-soft:#301A16;
+    --sage:#5D7166; --line:#22302C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B1211; --paper-2:#101917; --card:#121D1A;
+  --ink:#E3EAE5; --ink-2:#AAB9B3; --ink-3:#7E8E88;
+  --jade:#46C1A3; --jade-soft:#123028;
+  --amber:#DCA153; --amber-soft:#2C2317;
+  --verm:#E0715D; --verm-soft:#301A16;
+  --sage:#5D7166; --line:#22302C;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+:root[data-theme="light"]{
+  --paper:#EFF1EC; --paper-2:#E5E9E2; --card:#F7F8F5;
+  --ink:#111917; --ink-2:#3B4A46; --ink-3:#6D7C77;
+  --jade:#0F7A63; --jade-soft:#D8E7E1;
+  --amber:#B26A12; --amber-soft:#F0E3CE;
+  --verm:#A93728; --verm-soft:#F1DCD8;
+  --sage:#8CA294; --line:#CFD7CE;
+  --shadow:0 1px 2px rgba(17,25,23,.06), 0 8px 24px -12px rgba(17,25,23,.18);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
+
+.mast{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--jade);margin:0 0 18px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(38px,6.2vw,64px);line-height:1.02;
+  letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
+h1 em{font-style:italic;color:var(--jade)}
+.standfirst{font-size:clamp(16px,2vw,19px);color:var(--ink-2);max-width:62ch;margin:0}
+
+.keyfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);margin-top:36px;border-radius:2px;overflow:hidden}
+.keyfig div{background:var(--card);padding:16px 18px}
+.keyfig dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 6px}
+.keyfig dd{margin:0;font-family:var(--mono);font-size:23px;font-weight:600;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.keyfig dd span{font-size:12px;font-weight:400;color:var(--ink-3);letter-spacing:0}
+
+section{padding-top:56px}
+h2{font-family:var(--display);font-size:clamp(24px,3.4vw,33px);font-weight:600;letter-spacing:-.015em;
+  margin:0 0 8px;text-wrap:balance}
+h3{font-family:var(--body);font-size:16px;font-weight:650;margin:28px 0 8px;letter-spacing:-.005em}
+.lede{color:var(--ink-2);max-width:66ch;margin:0 0 24px}
+p{max-width:68ch}
+a{color:var(--jade);text-decoration:none;border-bottom:1px solid color-mix(in oklab,var(--jade) 35%,transparent)}
+a:hover{border-bottom-color:var(--jade)}
+a:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:2px}
+
+.route{display:grid;grid-template-columns:1fr;gap:32px;margin-top:28px}
+@media(min-width:940px){
+  .route{grid-template-columns:300px 1fr;gap:44px;align-items:start}
+  .mapcol{position:sticky;top:24px}
+}
+.mapcard{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:18px;box-shadow:var(--shadow)}
+.mapcard svg{display:block;width:100%;height:auto}
+.maplegend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.maplegend i{display:inline-block;width:16px;height:2px;vertical-align:middle;margin-right:6px}
+
+.stage{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:22px 24px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+.stage.rest{background:transparent;border-style:dashed;box-shadow:none}
+.stage.transfer{background:transparent;border-style:dashed;box-shadow:none;border-color:var(--amber)}
+.stage-head{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.num{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--paper);
+  background:var(--jade);border-radius:2px;padding:4px 7px;flex:none}
+.stage.rest .num{background:transparent;color:var(--sage);border:1px solid var(--sage)}
+.stage.transfer .num{background:transparent;color:var(--amber);border:1px solid var(--amber)}
+.stage-title{font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.01em;margin:0;flex:1 1 230px}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 7px;border-radius:2px;white-space:nowrap}
+.tag.queen{background:var(--verm-soft);color:var(--verm)}
+.tag.flat{background:var(--jade-soft);color:var(--jade)}
+
+.metrics{display:flex;flex-wrap:wrap;gap:0;margin:16px 0 6px;border-top:1px solid var(--line)}
+.metrics div{padding:11px 22px 11px 0;margin-right:22px;border-right:1px solid var(--line);flex:none}
+.metrics div:last-child{border-right:0;margin-right:0}
+.metrics dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin:0 0 3px}
+.metrics dd{margin:0;font-family:var(--mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.metrics dd span{font-size:11px;font-weight:400;color:var(--ink-3)}
+
+.profile{margin:10px 0 4px}
+.profile svg{display:block;width:100%;height:auto}
+.profile-ax{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10px;
+  color:var(--ink-3);letter-spacing:.06em;margin-top:2px;font-variant-numeric:tabular-nums}
+.stage p{font-size:14.5px;color:var(--ink-2);margin:12px 0 0}
+.road{font-family:var(--mono);font-size:11.5px;background:var(--paper-2);color:var(--ink-2);
+  padding:1px 5px;border-radius:2px;white-space:nowrap}
+.sleep{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-3);
+  margin-top:12px;padding-top:10px;border-top:1px dotted var(--line)}
+.sleep b{color:var(--ink-2);font-weight:600}
+
+.call{border-left:3px solid var(--amber);background:var(--amber-soft);padding:16px 20px;
+  border-radius:0 3px 3px 0;margin:24px 0}
+.call.stop{border-left-color:var(--verm);background:var(--verm-soft)}
+.call h4{margin:0 0 6px;font-size:13px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.call.stop h4{color:var(--verm)}
+.call p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:66ch}
+.call p + p{margin-top:8px}
+
+.tablewrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:3px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:580px;font-size:14px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+  text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-weight:500;white-space:nowrap}
+td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:0}
+td strong{color:var(--ink);font-weight:600}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.status{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:2px 6px;border-radius:2px;white-space:nowrap}
+.status.ok{background:var(--jade-soft);color:var(--jade)}
+.status.warn{background:var(--amber-soft);color:var(--amber)}
+.status.no{background:var(--verm-soft);color:var(--verm)}
+
+ul{padding-left:20px;max-width:68ch;color:var(--ink-2)}
+li{margin-bottom:7px}
+li strong{color:var(--ink)}
+.foot{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em;line-height:1.8}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Роудбук · кольцо из Тайбэя · вторая половина октября</p>
+  <h1>Тайвань <em>против часовой</em></h1>
+  <p class="standfirst">Замкнутое кольцо: выезд из Тайбэя своим ходом, возврат в Тайбэй. Ни один участок не проезжается дважды. Рифтовая долина и юг идут в начале, когда есть запас по графику и железная дорога рядом; два главных перевала — в конце, когда вы уже втянулись и акклиматизировались.</p>
+  <dl class="keyfig">
+    <div><dt>Ходовых дней</dt><dd>11</dd></div>
+    <div><dt>Днёвок</dt><dd>3</dd></div>
+    <div><dt>Дистанция</dt><dd>1 049 <span>км</span></dd></div>
+    <div><dt>Набор</dt><dd>10 650 <span>м</span></dd></div>
+    <div><dt>Высшая точка</dt><dd>3 275 <span>м</span></dd></div>
+    <div><dt>Короткий этап</dt><dd>72 <span>км</span></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2>Схема и этапы</h2>
+  <p class="lede">Сплошная — велосипед, пунктир — единственный неизбежный переезд по железной дороге. Кольцо замыкается в Илане: заезжаете в него в первый день с запада по горному шоссе через Пинлинь, возвращаетесь на одиннадцатый день с юго-запада, спустившись с хребта. Дороги разные.</p>
+
+  <div class="route">
+    <div class="mapcol">
+      <div class="mapcard">
+        <svg viewBox="0 0 268 716" role="img" aria-label="Схема Тайваня с кольцевым маршрутом из Тайбэя">
+          <path d="M193 20 L217 53 L241 77 L236 118 L230 158 L219 205 L210 244 L202 281 L195 316 L186 362 L178 420 L175 455 L163 492 L148 525 L138 578 L128 626 L118 670 L112 693 L101 658 L88 620 L77 600 L60 576 L47 550 L39 512 L35 475 L30 436 L27 400 L33 362 L44 316 L54 288 L63 267 L69 246 L73 228 L84 200 L96 174 L110 145 L122 119 L131 95 L142 69 L160 54 L180 44 Z"
+            fill="var(--paper-2)" stroke="var(--sage)" stroke-width="1.1" stroke-linejoin="round"/>
+          <g stroke="var(--sage)" fill="none" stroke-width=".8" opacity=".5">
+            <path d="M198 128 C182 200 168 268 152 340 C140 420 130 500 120 600"/>
+            <path d="M186 140 C172 206 158 272 143 344 C132 422 122 496 113 588"/>
+            <path d="M210 140 C196 206 182 272 166 342 C154 420 144 498 133 596"/>
+          </g>
+          <!-- rail: Yilan-Hualien (Su-Hua) and Yilan-Taipei -->
+          <g stroke="var(--amber)" fill="none" stroke-width="2.2" stroke-dasharray="4 4" stroke-linecap="round">
+            <path d="M219 129 L228 160 L222 205 L212 245 L202 281"/>
+            <path d="M219 129 L222 100 L212 72 L196 73"/>
+          </g>
+          <!-- bike route -->
+          <g stroke="var(--jade)" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M196 73 L214 91 L219 129"/>
+            <path d="M202 281 L188 330 L175 376 L166 410 L154 453 L147 523 L132 566 L118 604 L104 624 L83 600 L64 578 L47 548 L37 477 L48 424 L65 380 L80 384 L94 382 L106 374 L117 380 L112 337 L112 315 L119 305 L126 283 L145 271 L149 266 L163 250 L166 240 L159 228 L166 204 L179 190 L199 162 L219 129"/>
+          </g>
+          <g font-family="var(--mono)" font-size="8.5" font-weight="600" text-anchor="middle">
+            <g fill="var(--jade)" stroke="var(--paper)" stroke-width="1.6" paint-order="stroke">
+              <circle cx="213" cy="122" r="5.2"/><circle cx="175" cy="376" r="5.2"/>
+              <circle cx="147" cy="523" r="5.2"/><circle cx="83" cy="600" r="5.2"/>
+              <circle cx="47" cy="548" r="5.2"/><circle cx="65" cy="380" r="5.2"/>
+              <circle cx="106" cy="374" r="5.2"/><circle cx="112" cy="315" r="5.2"/>
+              <circle cx="149" cy="266" r="5.2"/><circle cx="159" cy="228" r="5.2"/>
+              <circle cx="228" cy="142" r="5.2"/>
+            </g>
+            <g fill="var(--paper)" stroke="none">
+              <text x="213" y="125">1</text><text x="175" y="379">2</text>
+              <text x="147" y="526">3</text><text x="83" y="603">4</text>
+              <text x="47" y="551">5</text><text x="65" y="383">6</text>
+              <text x="106" y="377">7</text><text x="112" y="318">8</text>
+              <text x="149" y="269">9</text><text x="159" y="231">10</text>
+              <text x="228" y="145" font-size="7.5">11</text>
+            </g>
+          </g>
+          <!-- start/finish -->
+          <rect x="192" y="69" width="8" height="8" fill="var(--ink)"/>
+          <!-- summits -->
+          <g><circle cx="163" cy="250" r="3" fill="var(--verm)"/>
+            <text x="171" y="248" font-family="var(--mono)" font-size="8" fill="var(--verm)" font-weight="600">3275</text></g>
+          <g><circle cx="117" cy="380" r="3" fill="var(--verm)"/>
+            <text x="125" y="392" font-family="var(--mono)" font-size="8" fill="var(--verm)" font-weight="600">2610</text></g>
+          <g font-family="var(--body)" font-size="8.5" fill="var(--ink-3)">
+            <text x="178" y="64">Тайбэй</text>
+            <text x="234" y="121">Илань</text>
+            <text x="208" y="288">Хуалянь</text>
+            <text x="182" y="379">Жуйсуй</text>
+            <text x="153" y="533">Тайдун</text>
+            <text x="66" y="612">Фанляо</text>
+            <text x="22" y="556">Гаосюн</text>
+            <text x="42" y="394">Цзяи</text>
+            <text x="72" y="366">Алишань</text>
+            <text x="92" y="312">Шуйли</text>
+            <text x="156" y="262">Цинцзин</text>
+            <text x="168" y="222">Лишань</text>
+          </g>
+        </svg>
+        <div class="maplegend">
+          <span><i style="background:var(--jade)"></i>велосипед</span>
+          <span><i style="background:var(--amber)"></i>поезд</span>
+          <span><i style="background:var(--verm)"></i>перевал</span>
+          <span><i style="background:var(--ink);height:7px;width:7px"></i>старт/финиш</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stagecol" id="stages"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Что изменилось против первой версии</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Замечание</th><th>Как решено</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Право/лево, восток/запад</strong></td>
+          <td>Найдена одна настоящая ошибка: на восточном побережье при движении <em>на север</em> океан справа, а Прибрежный хребет слева — было написано наоборот. В новом маршруте восточное побережье проезжается <em>на юг</em> (этап 4, Тайдун → Даву), и океан там действительно слева. Остальные привязки перепроверены: Уше и Цинцзин восточнее Пули; Алишань восточнее Цзяи; Фанляо на западном берегу, Даву на восточном; в Рифтовой долине при движении на юг Центральный хребет справа, Прибрежный слева.</td></tr>
+        <tr><td><strong>Убрать огрызки по 36 км</strong></td>
+          <td>Самый короткий этап теперь 72 км, и это королевский день с набором 1750 м. Средний этап — 95 км.</td></tr>
+        <tr><td><strong>Никаких повторов</strong></td>
+          <td>Выброшено двойное пересечение Улина туда-обратно. Хребет теперь проходится насквозь: заход с запада от Пули, выход на северо-восток по <span class="road">台7甲</span> к Илану. Каждое шоссе используется ровно один раз.</td></tr>
+        <tr><td><strong>Гаосюн — Фанляо своим ходом</strong></td>
+          <td>Поезд оттуда убран. Этап 4 приходит в Фанляо с востока через перевал Шоука, этап 5 идёт вдоль побережья на Гаосюн — оба крутятся педалями.</td></tr>
+        <tr><td><strong>Старт и финиш в Тайбэе</strong></td>
+          <td>Первый день — своим ходом из Тайбэя через Пинлинь в Илань по старому горному шоссе. Последний — спуск с хребта в Илань и часовой поезд в Тайбэй, либо, если остались силы, ещё один день по северному побережью.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="call">
+    <h4>Единственный поезд в маршруте</h4>
+    <p>Илань → Хуалянь, участок Су-Хуа. Это не компромисс ради экономии сил: там узкая полка над обрывом, плотный трафик и длинные тоннели со знаками «велосипедам въезд запрещён», а в январе 2026 отрезок 64–69 км на <span class="road">台9丁</span> признали невосстанавливаемым и весь поток перевели на основное шоссе. Проехать это на велосипеде нельзя.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Протокол тайфуна</h2>
+  <p class="lede">Октябрь — спад сезона, но не его отсутствие: Krathon вышел на сушу в Гаосюне 3 октября 2024 года, остров стоял двое суток, погибли 13 человек. Правила ниже не про то, как пересидеть, а про то, где именно нельзя оказаться в момент предупреждения.</p>
+
+  <div class="call stop">
+    <h4>Жёсткое правило</h4>
+    <p>При действующем морском предупреждении CWA — <strong>ни метра вверх</strong>. Ни <span class="road">台18</span>, ни <span class="road">台21</span>, ни <span class="road">台14甲</span>, ни <span class="road">台7甲</span>. Орографическое усиление превращает прибрежный ливень в горах в катастрофические суммы осадков, пик оползневой активности приходится на высоты выше 2000 м. На равнине шторм стоит вам двух дней в отеле; в горах вы оказываетесь заперты между двумя оползнями на дороге, которую откроют через месяц.</p>
+  </div>
+
+  <h3>Как это работает по времени</h3>
+  <ul>
+    <li><strong>За 2–3 суток</strong> — CWA ведёт потенциальный шторм, появляются прогнозные треки.</li>
+    <li><strong>Морское предупреждение (海上警報)</strong> — зона штормового ветра входит в прибрежные воды. Сигнал разворачиваться вниз и бронировать отель в долине.</li>
+    <li><strong>Наземное предупреждение (陸上警報)</strong> — ветер дойдёт до суши в течение 18 часов. Объявляется 颱風假: встают школы, учреждения, транспорт.</li>
+    <li><strong>Через 1–3 суток</strong> — жизнь возобновляется, но горные дороги открывают позже равнинных, иногда сильно позже.</li>
+  </ul>
+
+  <h3>Почему порядок этапов именно такой</h3>
+  <p>Горы стоят в конце сознательно. Первые шесть дней идут по Рифтовой долине, югу и западной равнине — везде рядом железная дорога, откуда угодно можно сняться за час. Если тайфун приходит в эту половину, вы теряете день и едете дальше. Если он приходит во вторую половину, вы уже знаете прогноз на неделю вперёд и просто не заходите наверх.</p>
+  <p>Три днёвки — это и есть буфер. Съел тайфун два дня — жертвуете отдыхом, а не маршрутом. Съел больше — режется этап 6 (Гаосюн → Цзяи, чистая равнина, дублируется поездом за полтора часа).</p>
+
+  <div class="call">
+    <h4>Где железной дороги нет</h4>
+    <p>Прибрежное шоссе <span class="road">台11</span> вдоль Тихого океана железной дорогой <strong>не дублируется</strong> — линия идёт в стороне, по Рифтовой долине. Именно поэтому маршрут спускается на юг долиной, а не берегом: красивее берегом, но снять себя оттуда в шторм нечем.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Что закрыто и почему этого нет в маршруте</h2>
+  <p class="lede">Три самых очевидных для велотуриста куска Тайваня сейчас либо закрыты, либо непригодны. Если готовый GPX ведёт вас туда — это старый трек.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Участок</th><th>Статус</th><th>Что именно</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Центральное поперечное</strong><br><span class="road">台8</span> Гугуань — Лишань</td>
+          <td><span class="status no">закрыто</span></td>
+          <td>Закрыто для нетранзитных бессрочно после землетрясения и тайфуна Mindulle. Не временно — постоянно. Поэтому из Лишаня есть ровно один выход на восток: <span class="road">台7甲</span> через Сыюань на Илань, и он в маршруте (этап 11).</td></tr>
+        <tr><td><strong>Ущелье Тароко</strong><br><span class="road">台8</span> Дайлу — Тяньсян</td>
+          <td><span class="status warn">по расписанию</span></td>
+          <td>После землетрясения апреля 2024 и девяти последующих тайфунов повреждено 28 участков дороги. Проезд открывают пять раз в день по часам, покрытие и отбойники не восстановлены, риск камнепада высокий. Четыре тоннеля чинят до 2028. На велосипеде в режиме конвоя — лотерея, поэтому спуск с Дайлу на восток из маршрута исключён.</td></tr>
+        <tr><td><strong>Шоссе Су-Хуа</strong><br><span class="road">台9</span> Су-ао — Хуалянь</td>
+          <td><span class="status no">не для вело</span></td>
+          <td>Узкая полка над обрывом, три подъёма, длинные тоннели со знаками запрета для велосипедов и очень плотным трафиком. Единственный отрезок маршрута, проезжаемый поездом.</td></tr>
+        <tr><td><strong>Южное поперечное</strong><br><span class="road">台20</span> и <span class="road">台27</span></td>
+          <td><span class="status warn">нестабильно</span></td>
+          <td>Горные участки в Гаосюне периодически закрывают из-за оползней, власти прямо призывают избегать горных дорог без необходимости. В маршруте не используются.</td></tr>
+        <tr><td><strong>Татацзя</strong><br><span class="road">台21</span> 110–144 км</td>
+          <td><span class="status warn">ворота</span></td>
+          <td>Открыто, но участок Цаопинтоу — Татацзя закрыт ежедневно с 17:30 до 07:00. Этап 8 идёт через эти ворота вниз и обязан пройти их засветло.</td></tr>
+        <tr><td><strong>Хэхуаньшань</strong><br><span class="road">台14甲</span> 18–41,5 км</td>
+          <td><span class="status ok">открыто</span></td>
+          <td>Выше 3000 м возможно превентивное закрытие при риске обледенения, но это зимний сценарий. В октябре штатно открыто; ранние похолодания теоретически возможны, проверять накануне.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Инструменты</h2>
+  <p class="lede">Профили на этой странице схематические — построены по контрольным точкам с реальными высотами, а не по съёмке. Для точной работы накладывайте их на GPX из баз по климбам.</p>
+
+  <h3>Профили и градиенты по конкретным подъёмам</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Ресурс</th><th>Что даёт</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://stationinthevalley.com/category/the-top-100-climbs-in-taiwan/">Station in the Valley</a><br><span class="road">топ-100 подъёмов</span></td>
+          <td>Лучшее, что есть по Тайваню: покилометровая раскладка, средний и максимальный градиент, состояние покрытия, где еда и жильё, <strong>GPX и KML на скачивание</strong>. Горные этапы этого маршрута описаны под номерами #006 (Алишань <span class="road">台18</span>), #007 (Татацзя <span class="road">台21</span>), #008 (Лишань — Дайлу).</td></tr>
+        <tr><td><a href="https://pjammcycling.com/zone/202.Top-Bike-Climbs-in-Taiwan">PJAMM Cycling</a></td>
+          <td>Профили с покилометровой заливкой по крутизне и разбивкой «сколько процентов подъёма на 10–15%, сколько на 15–20%». Осторожно: их «Wuling Pass West» — это <strong>не</strong> ваш подход. Это задняя дорога 24 км со средним 9–11% и максимумом 27%. Вам нужен классический вариант по <span class="road">台14</span> → <span class="road">台14甲</span> через Уше, там средний около 5%.</td></tr>
+        <tr><td><a href="https://taiwanoutdoors.com/cycling/">Taiwan Outdoors</a> · <a href="https://taiwancycle100.com/">Taiwan Cycle 100</a></td>
+          <td>Ранжированные списки подъёмов с базовой статистикой и характером дороги. Удобно подбирать замену, если что-то закроется.</td></tr>
+        <tr><td><a href="https://ridewithgps.com/">Ride with GPS</a> · <a href="https://www.komoot.com/">Komoot</a></td>
+          <td>Собрать нитку целиком и получить профиль с цветовой заливкой по градиенту. Komoot сильнее по офлайну и типам покрытия, RideWithGPS — по качеству профиля и cue sheet.</td></tr>
+        <tr><td><a href="https://taiwanbike.tw/">taiwanbike.tw</a></td>
+          <td>Официальный портал велосети: GPX национальных маршрутов, станции отдыха каждые 20 км, веломагазины вдоль трассы.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Статус дорог и погода — проверять ежедневно</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Ресурс</th><th>Зачем</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://168.thb.gov.tw/thb168">168.thb.gov.tw/thb168</a><br><span class="road">Highway Bureau</span></td>
+          <td>Официальный реалтайм по всем провинциальным шоссе: закрытия, ремонты, последствия стихии. Переключатель языка справа вверху, разделы Construction Info. и Disaster Info. <strong>Главный источник — смотреть каждое утро перед горным этапом.</strong></td></tr>
+        <tr><td><a href="https://www.ysnp.gov.tw/En/Highway/C001300">Yushan National Park · Road conditions</a></td>
+          <td>Отдельная страница по <span class="road">台21</span> и <span class="road">台18</span> в районе Татацзя и Алишаня — режим ворот и ограничения по времени. Этапы 7 и 8 живут по этой странице.</td></tr>
+        <tr><td><a href="https://www.cwa.gov.tw/">cwa.gov.tw</a><br><span class="road">Central Weather Administration</span></td>
+          <td>Тайфунные предупреждения и треки, морское и наземное. Английская версия полноценная.</td></tr>
+        <tr><td><a href="https://tip.railway.gov.tw/tra-tip-web/tip/tip00D/tipD11/view11?lang=EN_US">Taiwan Railway · Bicycle-friendly Train</a></td>
+          <td>Расписание поездов, берущих несобранный велосипед, и квоты мест. Нужно для переезда Илань → Хуалянь и для любой аварийной эвакуации.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Логистика</h2>
+
+  <h3>Велосипед в поезде</h3>
+  <p>Два режима. <strong>В чехле</strong> — как ручная кладь, разрешено на всех поездах: длина до 150 см, сумма трёх измерений до 220 см; тканевый мешок или пакет вместо нормального чехла на станцию не пропустят. <strong>Несобранный</strong> — только на специальных «двухколёсных» рейсах 兩鐵列車 с квотой 8, 15 или 30 мест и обязательной резервацией. Стоек в вагоне нет, велосипед держите сами.</p>
+  <p>В маршруте поезд нужен дважды: Илань → Хуалянь на второй день и Илань → Тайбэй в конце (около часа). Оба — по восточной магистрали, рейсы частые, но «двухколёсные» рейсы редки, так что резервируйте место заранее или везите чехол.</p>
+
+  <h3>Свой велосипед или аренда</h3>
+  <p>С двумя стыковками в пути аренда выглядит разумнее: у Giant сеть по всему острову со сдачей в другом городе — NT$1 500 за первые три дня и NT$200 за каждый следующий, две недели ≈ NT$3 700 (около $115), в комплекте туристический велосипед с багажником и сумками, мультитул, свет, насос. Но под этот маршрут <strong>проверьте передачу</strong>: 2450 м набора на этапе 7 и 1750 м на этапе 10 требуют реально лёгкой звезды, а не стандартной прокатной сборки.</p>
+
+  <h3>Жильё — что бронировать заранее</h3>
+  <ul>
+    <li><strong>Лишань</strong> — узкое горло всего маршрута. Выбор минимальный, основной вариант Lishan Guest House. Бронировать первым.</li>
+    <li><strong>Алишань</strong> — разбирают заранее, внутри лесной зоны дорого. Дешевле в Шицзо на 1000 м, но это сбивает профиль этапов 7 и 8.</li>
+    <li><strong>Цинцзин</strong> — минг-су сотнями, но в выходные цены удваиваются.</li>
+    <li><strong>Наньшань</strong> на 1150 м — единственная точка снабжения на всём <span class="road">台7甲</span>. Если этап 11 разваливается по времени, ночевать придётся там.</li>
+    <li><strong>Илань, Хуалянь, Жуйсуй, Тайдун, Фанляо, Гаосюн, Цзяи, Шуйли</strong> — обычные городские отели, можно бронировать за день-два.</li>
+  </ul>
+
+  <h3>Погода на маршруте в октябре</h3>
+  <p>На равнине 26–30 °C, влажно. На 2000 м (Алишань, Лишань) 10–16 °C. На Улине 3275 м — от 0 до 8 °C, с ветром ощущается сильно холоднее, и спуск на 1300 м вниз занимает больше часа. Нужны полноценная тёплая куртка, длинные перчатки и что-то на ноги — на равнине это кажется абсурдом, на перевале спасает. Отдельно: в октябре включается северо-восточный муссон, и Илань — одно из самых мокрых мест острова. Первый и последний день закладывайте на дождь.</p>
+
+  <h3>Варианты подгонки</h3>
+  <ul>
+    <li><strong>Нужно ровно 10 ходовых дней:</strong> убрать этап 1 и уехать поездом сразу Тайбэй → Хуалянь. Теряете хороший горный день, но экономите сутки.</li>
+    <li><strong>Этап 7 кажется слишком тяжёлым</strong> (88 км, 2450 м — единственный день выше вашего потолка по набору): разбить ночёвкой в Шицзо на 1000 м, получится 63 + 25 км.</li>
+    <li><strong>Осталась энергия в конце:</strong> вместо поезда Илань → Тайбэй ехать северным побережьем по <span class="road">台2</span> через Тоучэн, Фулун и Цзилун — около 105 км, другая дорога, и кольцо замыкается полностью своим ходом.</li>
+    <li><strong>Хочется Тихого океана:</strong> этап 2 можно вести не долиной, а берегом по <span class="road">台11</span>. Красивее, но без железной дороги рядом — только при чистом прогнозе на трое суток вперёд.</li>
+  </ul>
+</section>
+
+<p class="foot">
+Роудбук построен под вторую половину октября 2026.<br>
+1 049 км · 10 650 м набора · 11 ходовых дней · 3 днёвки · ни одного повторного участка.<br>
+Статус дорог меняется после каждого дождя: 168.thb.gov.tw проверяется утром каждого горного дня, без исключений.
+</p>
+
+</div>
+
+<script>
+const STAGES = [
+  { n:'1', title:'Тайбэй → Пинлинь → Илань', km:78, up:950, top:520,
+    road:'台9 北宜', sleep:'Илань — вечером поезд в Хуалянь, ночевать уже там',
+    prof:[[0,15],[10,120],[20,330],[28,500],[36,420],[46,520],[56,260],[66,90],[78,10]],
+    text:'Выезд из города своим ходом по старому горному шоссе Бэй-и через чайные террасы Пинлиня. Две ступени подъёма примерно до 520 м, между ними ложбина, дальше длинный спуск на восток к Иланьской равнине. Дорога с трафиком, но обочина есть и повороты просматриваются. Приехав в Илань во второй половине дня, грузитесь на поезд до Хуаляня — это и есть переезд через Су-Хуа.' },
+
+  { n:'⇢', title:'Переезд: Илань → Хуалянь', transfer:true,
+    text:'Около двух часов по восточной магистрали. Единственный участок маршрута, где велосипед едет пассажиром — и единственный, где иначе нельзя: тоннели Су-Хуа закрыты для велосипедов знаками, а отрезок 64–69 км на 台9丁 в январе 2026 признали невосстанавливаемым и весь поток перевели на основное шоссе.' },
+
+  { n:'2', title:'Хуалянь → Рифтовая долина → Жуйсуй', km:90, up:700, top:320,
+    road:'縣道193 → 台9', sleep:'Жуйсуй — горячие источники, отелей достаточно',
+    prof:[[0,15],[10,120],[20,60],[32,200],[44,90],[56,260],[68,120],[80,320],[90,120]],
+    text:'Первый настоящий день. Уходите на юг по 193-й — тихой дороге вдоль восточного края Рифтовой долины, у подножия Прибрежного хребта. Постоянные перекаты по 100–200 м, рисовые террасы, почти нет машин. Едете на юг: Центральный хребет справа, Прибрежный слева, между ними долина шириной несколько километров. Железная дорога идёт параллельно всю дорогу — это ваш аварийный выход весь день.' },
+
+  { n:'3', title:'Жуйсуй → Юйли → Чишан → Тайдун', km:105, up:600, top:280,
+    road:'台9 / 縣道197', sleep:'Тайдун',
+    prof:[[0,120],[15,180],[30,260],[45,280],[60,220],[75,140],[90,60],[105,15]],
+    text:'Продолжение долины на юг, длинный ровный день с малым набором. Юйли и Чишан — точки, ради которых сюда едут: рисовые поля до горизонта, зажатые между двумя хребтами. Ближе к Тайдуну долина раскрывается и выходит к океану. Если хочется добавить рельефа, последние 40 км можно вести по 197-й вместо 9-й — грунт местами, но пусто и с видами.' },
+
+  { n:'R', title:'Днёвка · Тайдун', rest:true,
+    text:'Первый крупный сброс. Тайдун — тёплый океанский город с нормальной едой и веломастерскими: здесь имеет смысл проверить и обслужить велосипед перед южным перевалом. Заодно первая серьёзная сверка прогноза CWA: со следующего дня и до конца маршрута вы всё дальше от лёгких путей отхода.' },
+
+  { n:'4', title:'Тайдун → Даву → перевал Шоука → Фанляо', km:105, up:800, top:460,
+    road:'台9', sleep:'Фанляо',
+    prof:[[0,15],[15,60],[30,40],[45,80],[58,30],[70,150],[80,460],[92,180],[105,15]],
+    text:'День, когда вы пересекаете остров с востока на запад по его южной оконечности. Первые 58 км — вдоль Тихого океана на юг, вода слева, горы справа. У Даву дорога отворачивает от берега и уходит вверх на перевал Шоука, 460 м: подъём короткий и честный, около 22 км. С перевала спуск к Фанляо уже на западном побережье. Ветер на южной оконечности в октябре может быть заметный, чаще попутный на подъёме.' },
+
+  { n:'5', title:'Фанляо → Гаосюн', tag:'flat', km:90, up:150, top:40,
+    road:'台17 / 台1', sleep:'Гаосюн',
+    prof:[[0,15],[20,25],[40,20],[60,30],[75,15],[90,10]],
+    text:'Ровный перегон на север вдоль западного побережья: Тайваньский пролив слева, равнина справа. Плоско, тепло, местами рыбные пруды до горизонта. Идеальный день, чтобы разгрузить ноги после Шоуки и перед 145-километровым этапом. Гаосюн — второй город страны, с метро и нормальным веломагазином на случай, если что-то надо чинить.' },
+
+  { n:'6', title:'Гаосюн → Тайнань → Цзяи', tag:'flat', km:145, up:250, top:45,
+    road:'台1 / 台19', sleep:'Цзяи',
+    prof:[[0,10],[30,15],[55,12],[80,20],[105,25],[125,35],[145,30]],
+    text:'Тот самый равнинный перегон на полторы сотни. Плоско, жарко, урбанизировано — зато Тайнань ровно посередине компенсирует старой столицей и лучшей едой на острове. Это первый кандидат на вылет, если тайфун съел день: тот же участок поезд проходит за полтора часа. Цзяи вечером — база перед главным подъёмом маршрута.' },
+
+  { n:'7', title:'Цзяи → Шицзо → Алишань', tag:'queen', km:88, up:2450, top:2200,
+    road:'台18', sleep:'Алишань — бронировать заранее',
+    prof:[[0,30],[15,60],[25,120],[35,300],[45,600],[55,900],[63,1000],[70,1400],[80,1850],[88,2200]],
+    text:'Классика Тайваня и самый тяжёлый день маршрута. Первые 30 км по городу и предгорьям идут под 1–2%, дальше, после моста у храма Чукоу, дорога встаёт: серпантины с уклонами за 10%. Шицзо на 63-м километре и 1000 м — первый настоящий посёлок с едой и ночлегом, там же точка разрыва, если день окажется слишком длинным. Выше — чайные плантации и последний 7-Eleven у ворот парка. Выезжать на рассвете: по 台18 идёт до сотни туристических автобусов в сутки, а к полудню наверху садится облачность.' },
+
+  { n:'R', title:'Днёвка · Алишань', rest:true,
+    text:'2200 м, туман, чай и знаменитый рассвет над морем облаков. После вчерашних двух с половиной тысяч набора день отдыха здесь не роскошь, а необходимость — и заодно акклиматизация перед следующей высотой.' },
+
+  { n:'8', title:'Алишань → Татацзя 2610 → Синьи → Шуйли', km:88, up:700, top:2610,
+    road:'台18 → 台21', sleep:'Шуйли или Синьи — есть горячие источники',
+    prof:[[0,2200],[12,2450],[21,2610],[32,2100],[42,1500],[52,900],[61,400],[72,330],[88,250]],
+    text:'Короткий добор до седловины Татацзя — 21 км и 410 м, высшая точка шоссе 18 — и дальше 60 км почти непрерывного спуска по 21-му на север, в долину Шуйли. Есть тоннель 500–700 м, свет обязателен. Главное ограничение дня жёсткое: участок 110–144 км закрывается воротами в 17:30. Планировать так, чтобы пройти их с запасом в пару часов, а не «успеть впритык».' },
+
+  { n:'9', title:'Шуйли → Солнечно-Лунное озеро → Пули → Уше → Цинцзин', km:78, up:1550, top:1750,
+    road:'台21 → 台14 → 台14甲', sleep:'Цинцзин, 1750 м — акклиматизация перед завтра',
+    prof:[[0,250],[10,600],[16,750],[26,620],[34,500],[46,700],[54,1150],[64,1400],[78,1750]],
+    text:'Подводящий день ко второму перевалу. Сначала подъём к Солнечно-Лунному озеру на 750 м и обход его по берегу, затем спуск в Пули и с него — начало главного западного подхода: 台14 до Уше на 1150 м, где дорога переходит в 台14甲. Ночёвка на 1750 м нужна физиологически: завтра вы поднимаетесь на 3275, и разница между ночёвкой на 500 и на 1750 чувствуется на перевале очень отчётливо.' },
+
+  { n:'10', title:'Цинцзин → Улин 3275 → Дайлу → Лишань', tag:'queen', km:72, up:1750, top:3275,
+    road:'台14甲 → 台8', sleep:'Лишань — узкое место маршрута, бронировать первым',
+    prof:[[0,1750],[8,2300],[13,2700],[17,3070],[20,3275],[26,2900],[32,2565],[42,2320],[56,2060],[72,1950]],
+    text:'Королевский этап. От Цинцзина до высшей точки шоссейной сети Восточной Азии — 20 км и 1525 м через Цуйфэн и Куньян. Последний магазин остаётся на 1950 м, выше нет ничего. С перевала спуск к развилке Дайлу на 2565 м, оттуда 台8 идёт на северо-запад вдоль хребта к Лишаню, с перекатами. Стартовать затемно: во второй половине дня наверху почти гарантированно облачность, а спуск в тумане при четырёх градусах — отдельное удовольствие.' },
+
+  { n:'R', title:'Днёвка · Лишань', rest:true,
+    text:'Яблочно-грушевая столица острова на 1950 м, тихо и прохладно. Отсюда есть ровно один выход — 台7甲 на северо-восток: участок 台8 на запад к Гугуаню закрыт бессрочно. Проверьте статус 7甲 на 168.thb.gov.tw именно в этот день, потому что альтернативы у вас не будет.' },
+
+  { n:'11', title:'Лишань → Сыюань → Наньшань → Илань', km:110, up:750, top:1948,
+    road:'台7甲 → 台7', sleep:'Илань, дальше поезд в Тайбэй',
+    prof:[[0,1950],[10,1820],[20,1948],[32,1600],[44,1150],[58,800],[72,420],[88,150],[110,15]],
+    text:'Финал: сквозной выход с хребта на северо-восток. Первые 20 км идут по гребню с небольшими перекатами до перевала Сыюань, 1948 м, дальше начинается спуск длиной почти 90 км — сначала кленовыми и кедровыми лесами, затем ущельем реки Ланьян к Иланьской равнине. Наньшань на 1150 м — единственная точка снабжения на всём участке, дальше до самого низа ничего. В Илане кольцо замыкается: сюда вы приехали в первый день с другой стороны, по другой дороге. Оттуда час на поезде до Тайбэя — или ещё один день по северному побережью, если хочется замкнуть всё своим ходом.' }
+];
+
+const NS = 'http://www.w3.org/2000/svg';
+function bandFor(g){
+  const a = Math.abs(g);
+  if (a < 4) return '--jade';
+  if (a < 8) return '--amber';
+  return '--verm';
+}
+
+function buildProfile(points){
+  const W = 600, H = 116, PAD_B = 14, PAD_T = 12;
+  const maxKm = points[points.length-1][0];
+  const eles = points.map(p => p[1]);
+  const maxE = Math.max(...eles), minE = Math.min(...eles);
+  const span = Math.max(maxE - minE, 100);
+  const x = km => (km / maxKm) * W;
+  const y = e => PAD_T + (1 - (e - minE) / span) * (H - PAD_T - PAD_B);
+
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', `Профиль высот: ${maxKm} км, максимум ${maxE} м`);
+
+  const grid = document.createElementNS(NS, 'path');
+  grid.setAttribute('d', `M0 ${H-PAD_B+0.5} H${W}`);
+  grid.setAttribute('stroke', 'var(--line)');
+  grid.setAttribute('stroke-width', '1');
+  svg.appendChild(grid);
+
+  for (let i = 0; i < points.length - 1; i++){
+    const [k1,e1] = points[i], [k2,e2] = points[i+1];
+    const grade = ((e2 - e1) / ((k2 - k1) * 1000)) * 100;
+    const col = `var(${bandFor(grade)})`;
+    const seg = document.createElementNS(NS, 'path');
+    seg.setAttribute('d',
+      `M${x(k1).toFixed(1)} ${(H-PAD_B).toFixed(1)} L${x(k1).toFixed(1)} ${y(e1).toFixed(1)} ` +
+      `L${x(k2).toFixed(1)} ${y(e2).toFixed(1)} L${x(k2).toFixed(1)} ${(H-PAD_B).toFixed(1)} Z`);
+    seg.setAttribute('fill', col);
+    seg.setAttribute('fill-opacity', '0.26');
+    svg.appendChild(seg);
+
+    const line = document.createElementNS(NS, 'path');
+    line.setAttribute('d', `M${x(k1).toFixed(1)} ${y(e1).toFixed(1)} L${x(k2).toFixed(1)} ${y(e2).toFixed(1)}`);
+    line.setAttribute('stroke', col);
+    line.setAttribute('stroke-width', '2.4');
+    line.setAttribute('fill', 'none');
+    line.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(line);
+  }
+
+  const iMax = eles.indexOf(maxE);
+  const dot = document.createElementNS(NS, 'circle');
+  dot.setAttribute('cx', x(points[iMax][0]).toFixed(1));
+  dot.setAttribute('cy', y(maxE).toFixed(1));
+  dot.setAttribute('r', '3.2');
+  dot.setAttribute('fill', 'var(--ink)');
+  svg.appendChild(dot);
+
+  const lbl = document.createElementNS(NS, 'text');
+  const anchorEnd = x(points[iMax][0]) > W * 0.72;
+  lbl.setAttribute('x', (x(points[iMax][0]) + (anchorEnd ? -7 : 7)).toFixed(1));
+  lbl.setAttribute('y', (y(maxE) + 4).toFixed(1));
+  lbl.setAttribute('text-anchor', anchorEnd ? 'end' : 'start');
+  lbl.setAttribute('font-family', 'var(--mono)');
+  lbl.setAttribute('font-size', '11');
+  lbl.setAttribute('font-weight', '600');
+  lbl.setAttribute('fill', 'var(--ink)');
+  lbl.textContent = maxE.toLocaleString('ru-RU') + ' м';
+  svg.appendChild(lbl);
+
+  return svg;
+}
+
+const host = document.getElementById('stages');
+const fmt = n => n.toLocaleString('ru-RU');
+
+STAGES.forEach(s => {
+  const card = document.createElement('article');
+  card.className = 'stage' + (s.rest ? ' rest' : '') + (s.transfer ? ' transfer' : '');
+
+  const head = document.createElement('div');
+  head.className = 'stage-head';
+  head.innerHTML = `<span class="num">${s.n}</span><h3 class="stage-title">${s.title}</h3>` +
+    (s.tag === 'queen' ? '<span class="tag queen">королевский этап</span>' : '') +
+    (s.tag === 'flat'  ? '<span class="tag flat">равнинный перегон</span>' : '');
+  card.appendChild(head);
+
+  if (!s.rest && !s.transfer){
+    const met = document.createElement('dl');
+    met.className = 'metrics';
+    met.innerHTML =
+      `<div><dt>Дистанция</dt><dd>${s.km} <span>км</span></dd></div>` +
+      `<div><dt>Набор</dt><dd>${fmt(s.up)} <span>м</span></dd></div>` +
+      `<div><dt>Верхняя точка</dt><dd>${fmt(s.top)} <span>м</span></dd></div>` +
+      `<div><dt>Дороги</dt><dd style="font-size:14px">${s.road}</dd></div>`;
+    card.appendChild(met);
+
+    const pw = document.createElement('div');
+    pw.className = 'profile';
+    pw.appendChild(buildProfile(s.prof));
+    const ax = document.createElement('div');
+    ax.className = 'profile-ax';
+    ax.innerHTML = `<span>0 км</span><span>уклон: до 4% · 4–8% · свыше 8%</span><span>${s.km} км</span>`;
+    pw.appendChild(ax);
+    card.appendChild(pw);
+  }
+
+  const p = document.createElement('p');
+  p.textContent = s.text;
+  card.appendChild(p);
+
+  if (s.sleep){
+    const sl = document.createElement('div');
+    sl.className = 'sleep';
+    sl.innerHTML = `<b>Ночёвка:</b> ${s.sleep}`;
+    card.appendChild(sl);
+  }
+  host.appendChild(card);
+});
+</script>
+
+<button class="themetoggle" id="themetoggle" type="button" aria-label="Переключить тему">тема</button>
+<script>
+(function(){
+  var root = document.documentElement, btn = document.getElementById('themetoggle');
+  var saved = null;
+  try { saved = localStorage.getItem('roadbook-theme'); } catch(e){}
+  if (saved) root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    if (!cur) {
+      cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('roadbook-theme', next); } catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
