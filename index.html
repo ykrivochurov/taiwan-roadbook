@@ -63,8 +63,10 @@
 }
 
 *{box-sizing:border-box}
+html{overscroll-behavior-x:none}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
-  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  overscroll-behavior-x:none;max-width:100%;overflow-x:clip}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
 
 .mast{padding:64px 0 40px;border-bottom:1px solid var(--line)}
@@ -129,8 +131,44 @@ a:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:2
 
 .profile{margin:10px 0 4px}
 .profile svg{display:block;width:100%;height:auto}
-.profile-ax{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10px;
-  color:var(--ink-3);letter-spacing:.06em;margin-top:2px;font-variant-numeric:tabular-nums}
+.profile-ax{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.06em;margin-top:4px;
+  font-variant-numeric:tabular-nums}
+.grades{display:flex;gap:12px;flex-wrap:wrap}
+.grades span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.grades i{width:13px;height:4px;border-radius:1px;flex:none}
+
+/* фотогалерея этапа */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:16px}
+.shot{position:relative;margin:0;padding:0;border:0;background:none;cursor:zoom-in;
+  border-radius:2px;overflow:hidden;line-height:0;aspect-ratio:4/3}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.shot:hover img{transform:scale(1.045)}
+.shot:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.shot figcaption{position:absolute;inset:auto 0 0 0;padding:16px 8px 6px;
+  font-family:var(--mono);font-size:9.5px;line-height:1.35;letter-spacing:.04em;color:#fff;
+  text-align:left;background:linear-gradient(to top,rgba(8,14,12,.82),rgba(8,14,12,0))}
+.shots-none{margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+  color:var(--ink-3);border-top:1px dotted var(--line);padding-top:10px}
+
+/* лайтбокс */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(8,14,12,.93);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:28px;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.lb[data-open="1"]{opacity:1;pointer-events:auto}
+.lb img{max-width:min(1200px,94vw);max-height:78vh;object-fit:contain;border-radius:2px}
+.lb figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:#D8E0DA;
+  text-align:center;max-width:70ch;line-height:1.6}
+.lb figcaption a{color:#8FD9C3;border-bottom-color:rgba(143,217,195,.4)}
+.lb-close{position:absolute;top:16px;right:18px;background:none;border:1px solid rgba(255,255,255,.35);
+  color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:7px 11px;
+  border-radius:2px;cursor:pointer}
+.lb-close:hover{border-color:#fff}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;
+  font-size:34px;line-height:1;padding:12px 18px;cursor:pointer;opacity:.65}
+.lb-nav:hover{opacity:1}
+.lb-prev{left:6px} .lb-next{right:6px}
 .stage p{font-size:14.5px;color:var(--ink-2);margin:12px 0 0}
 .road{font-family:var(--mono);font-size:11.5px;background:var(--paper-2);color:var(--ink-2);
   padding:1px 5px;border-radius:2px;white-space:nowrap}
@@ -398,6 +436,7 @@ li strong{color:var(--ink)}
 
 </div>
 
+<script>const PHOTOS = {"1": [{"f": "img/s1-1.jpg", "cap": "Холмы у Пинлиня", "author": "丘崈", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:%E6%B0%B4%E8%81%B3%E6%B7%92%E5%9D%91%E5%BA%84%E4%B8%80%E6%99%AF.jpg"}, {"f": "img/s1-2.jpg", "cap": "Песчаниковые стены в Пинлине", "author": "丘崈", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:%E5%9D%AA%E6%9E%97%E5%B0%BE%E5%9C%B0%E5%8D%80%E7%A0%82%E5%B2%A9%E7%A3%9A%E7%89%86.jpg"}], "2": [{"f": "img/s2-1.jpg", "cap": "Рифтовая долина под Хуалянем", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Hualien_-_Hualien4401.jpg"}, {"f": "img/s2-2.jpg", "cap": "Долина Хуатун", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Hualien_-_Hualien4407.jpg"}, {"f": "img/s2-3.jpg", "cap": "Хребты над долиной", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Hualien_-_Hualien4408.jpg"}], "3": [{"f": "img/s3-1.jpg", "cap": "Аллея Мистера Брауна, Чишан", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Mr._Brown_Avenue,_Chishang.jpg"}, {"f": "img/s3-2.jpg", "cap": "Рисовые поля Чишана", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Chishang1.jpg"}, {"f": "img/s3-3.jpg", "cap": "Чишан между двумя хребтами", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Chishang2.jpg"}], "4": [], "5": [{"f": "img/s5-1.jpg", "cap": "Гаосюн с крыши", "author": "Jaller94", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:2024-04-28_Kaohsiung_from_a_rooftop.jpg"}, {"f": "img/s5-2.jpg", "cap": "Гаосюн, вид на восток", "author": "Jaller94", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:2024-04-28_Kaohsiung_from_a_rooftop_(East).jpg"}, {"f": "img/s5-3.jpg", "cap": "Гаосюн, вид на запад", "author": "Jaller94", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:2024-04-28_Kaohsiung_from_a_rooftop_(West).jpg"}], "6": [{"f": "img/s6-1.jpg", "cap": "Цзяи", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Chiayi_-_Chiayi5369.jpg"}, {"f": "img/s6-2.jpg", "cap": "Тайнань", "author": "Lchung9779", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:A_Small_Church_in_Tainan,_Taiwan.jpg"}, {"f": "img/s6-3.jpg", "cap": "Храм в Тайнане", "author": "Krysbee", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Buddhist_temple_facade_-_Taiwan.jpg"}], "7": [{"f": "img/s7-1.jpg", "cap": "Алишань, верхняя тропа", "author": "Jaller94", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:2024-04-21_Alishan_Sakura_Trail_(Upper_area).jpg"}, {"f": "img/s7-2.jpg", "cap": "Лес Алишаня", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Alishan,_Part_II_-_Alishan5306.jpg"}, {"f": "img/s7-3.jpg", "cap": "Алишань в облаках", "author": "lumoplank", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Alishan,_Part_II_-_Alishan5311.jpg"}], "8": [], "9": [{"f": "img/s9-1.jpg", "cap": "Дорога у Солнечно-Лунного озера", "author": "Jason Zhang", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Street_near_the_Sun_Moon_Lake,_August_2017.jpg"}, {"f": "img/s9-2.jpg", "cap": "Итатао на берегу озера", "author": "Abasaa", "lic": "Public domain", "src": "https://commons.wikimedia.org/wiki/File:Ita_Thao_Shopping_Street_01.JPG"}], "10": [{"f": "img/s10-1.jpg", "cap": "Закат на Хэхуаньшане", "author": "Mark 高維隆", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Sunset_in_Hehuanshan,_Taroko_National_Park.jpg"}, {"f": "img/s10-2.jpg", "cap": "Тени облаков, Хэхуаньшань", "author": "PS Liu", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Cloud_shadows_in_Hehuanshan.jpg"}, {"f": "img/s10-3.jpg", "cap": "Хребет у Улина", "author": "GiveMeMollusks", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:Mountains_in_Hehuanshan_National_Forest_Recreation_Area.jpg"}], "11": [{"f": "img/s11-1.jpg", "cap": "С перевала Сыюань на Наньшань и долину Ланьян", "author": "Piano08647", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:%E6%80%9D%E6%BA%90%E5%95%9E%E5%8F%A3%E7%9C%BA%E6%9C%9B%E5%8D%97%E5%B1%B1%E9%83%A8%E8%90%BD%E5%8F%8A%E8%98%AD%E9%99%BD%E6%BA%AA%E8%B0%B7.jpg"}, {"f": "img/s11-2.jpg", "cap": "Перевал Сыюань с Фушоушаня", "author": "氏子", "lic": "CC0", "src": "https://commons.wikimedia.org/wiki/File:%E7%94%B1%E7%A6%8F%E5%A3%BD%E5%B1%B1%E5%A4%A9%E6%B1%A0%E7%9C%BA%E6%9C%9B%E6%80%9D%E6%BA%90%E5%9F%A1%E5%8F%A3.jpg"}, {"f": "img/s11-3.jpg", "cap": "Ферма Улин", "author": "Masatada Ho", "lic": "Public domain", "src": "https://commons.wikimedia.org/wiki/File:Cherry_blossoms_and_tour_buses_at_Wuling_Farm_20220209.jpg"}]};</script>
 <script>
 const STAGES = [
   { n:'1', title:'Тайбэй → Пинлинь → Илань', km:78, up:950, top:520,
@@ -543,6 +582,51 @@ function buildProfile(points){
 const host = document.getElementById('stages');
 const fmt = n => n.toLocaleString('ru-RU');
 
+// ---- лайтбокс ----
+let lbSet = [], lbIdx = 0, lbEl = null;
+function buildLightbox(){
+  lbEl = document.createElement('figure');
+  lbEl.className = 'lb';
+  lbEl.innerHTML =
+    '<button class="lb-close" type="button" aria-label="Закрыть">закрыть ✕</button>' +
+    '<button class="lb-nav lb-prev" type="button" aria-label="Предыдущее фото">‹</button>' +
+    '<button class="lb-nav lb-next" type="button" aria-label="Следующее фото">›</button>' +
+    '<img alt=""><figcaption></figcaption>';
+  document.body.appendChild(lbEl);
+  lbEl.querySelector('.lb-close').addEventListener('click', closeLightbox);
+  lbEl.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); step(-1); });
+  lbEl.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); step(1); });
+  lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lbEl || lbEl.dataset.open !== '1') return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+}
+function render(){
+  const ph = lbSet[lbIdx];
+  lbEl.querySelector('img').src = ph.f;
+  lbEl.querySelector('img').alt = ph.cap;
+  lbEl.querySelector('figcaption').innerHTML =
+    ph.cap + ' · ' + (ph.author || '—') + ' · ' + (ph.lic || '') +
+    (ph.src ? ' · <a href="' + ph.src + '" target="_blank" rel="noopener">Wikimedia Commons</a>' : '');
+  const many = lbSet.length > 1;
+  lbEl.querySelector('.lb-prev').style.display = many ? '' : 'none';
+  lbEl.querySelector('.lb-next').style.display = many ? '' : 'none';
+}
+function step(d){ lbIdx = (lbIdx + d + lbSet.length) % lbSet.length; render(); }
+function openLightbox(set, i){
+  if (!lbEl) buildLightbox();
+  lbSet = set; lbIdx = i; render();
+  lbEl.dataset.open = '1';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  if (lbEl) lbEl.dataset.open = '0';
+  document.body.style.overflow = '';
+}
+
 STAGES.forEach(s => {
   const card = document.createElement('article');
   card.className = 'stage' + (s.rest ? ' rest' : '') + (s.transfer ? ' transfer' : '');
@@ -569,7 +653,14 @@ STAGES.forEach(s => {
     pw.appendChild(buildProfile(s.prof));
     const ax = document.createElement('div');
     ax.className = 'profile-ax';
-    ax.innerHTML = `<span>0 км</span><span>уклон: до 4% · 4–8% · свыше 8%</span><span>${s.km} км</span>`;
+    ax.innerHTML =
+      `<span>0 км</span>` +
+      `<span class="grades">` +
+        `<span><i style="background:var(--jade)"></i>до 4%</span>` +
+        `<span><i style="background:var(--amber)"></i>4–8%</span>` +
+        `<span><i style="background:var(--verm)"></i>свыше 8%</span>` +
+      `</span>` +
+      `<span>${s.km} км</span>`;
     pw.appendChild(ax);
     card.appendChild(pw);
   }
@@ -577,6 +668,37 @@ STAGES.forEach(s => {
   const p = document.createElement('p');
   p.textContent = s.text;
   card.appendChild(p);
+
+  // фотографии этапа (только в версии на GitHub Pages)
+  if (typeof PHOTOS !== 'undefined' && !s.rest && !s.transfer) {
+    const shots = PHOTOS[s.n] || [];
+    if (shots.length) {
+      const g = document.createElement('div');
+      g.className = 'shots';
+      shots.forEach((ph, i) => {
+        const fig = document.createElement('figure');
+        fig.className = 'shot';
+        fig.tabIndex = 0;
+        fig.setAttribute('role', 'button');
+        fig.setAttribute('aria-label', 'Открыть фото: ' + ph.cap);
+        fig.innerHTML =
+          `<img src="${ph.f}" alt="${ph.cap}" loading="lazy" decoding="async">` +
+          `<figcaption>${ph.cap}</figcaption>`;
+        const open = () => openLightbox(shots, i);
+        fig.addEventListener('click', open);
+        fig.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+        });
+        g.appendChild(fig);
+      });
+      card.appendChild(g);
+    } else {
+      const none = document.createElement('div');
+      none.className = 'shots-none';
+      none.textContent = 'Фото этого участка в свободных лицензиях не нашлось';
+      card.appendChild(none);
+    }
+  }
 
   if (s.sleep){
     const sl = document.createElement('div');
@@ -597,9 +719,7 @@ STAGES.forEach(s => {
   if (saved) root.setAttribute('data-theme', saved);
   btn.addEventListener('click', function(){
     var cur = root.getAttribute('data-theme');
-    if (!cur) {
-      cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    if (!cur) cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     var next = cur === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('roadbook-theme', next); } catch(e){}
